@@ -30,7 +30,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight); // Créer un canvas couvrant tout l'écran
 // Création de sliders pour ajuster les paramètres des véhicules
     // "label", min, max, val, pas, posX, posY, couleur, propriété à changer
-    createMonSlider("maxSpeed", 1, 20, 7, 1, 10, 0, "white", "maxSpeed");
+    createMonSlider("maxSpeed", 1, 20,10, 1, 10, 0, "white", "maxSpeed");
     createMonSlider("maxForce", 0.1, 1, 0.5, 0.05, 10, 30, "white", "maxForce");
  // createCanvas(800, 800);
 //quadtree start
