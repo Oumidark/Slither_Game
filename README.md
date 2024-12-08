@@ -1,47 +1,74 @@
-🐍 🎮 Slither-Game
-Slither-Game est un jeu interactif développé en HTML, CSS, et JavaScript, utilisant la bibliothèque p5.js pour gérer les interactions graphiques et le comportement autonome. Inspiré de Slither.io, ce projet met en œuvre des concepts avancés tels que l'intelligence artificielle pour les ennemis, la gestion des collisions, et des effets visuels engageants.
+# 🐍🎮 Slither-Game  
 
-📋 Table des Matières
-🎮 Aperçu
-✨ Fonctionnalités
-🛠 Technologies et Outils
-🚀 Installation et Configuration
-📖 Mode d'Emploi
-🤝 Contributions
-© Licence
-📧 Contact
-🎮 Aperçu
+**Slither-Game** est un jeu interactif inspiré du célèbre Slither.io, développé en HTML, CSS, et JavaScript. Ce projet utilise la bibliothèque [p5.js](https://p5js.org/) pour gérer les interactions graphiques et le comportement autonome. Réalisé dans le cadre de mon cours d'IA Réactive, il illustre l'application de concepts étudiés en classe pour créer une expérience de jeu immersive où le joueur contrôle un serpent tout en interagissant avec des ennemis autonomes, des mangoustes, et un environnement dynamique.  
 
-Dans Slither-Game, vous incarnez un serpent qui doit grandir en mangeant des objets dispersés tout en évitant des obstacles et des ennemis autonomes.
+---
 
-Capture d'écran du jeu : (ajoutez une capture ici)
-(par exemple, un aperçu de l'écran de démarrage ou du gameplay).
+## 🌟 Aperçu  
 
-Vidéo de démonstration : (ajoutez un lien vers une vidéo de démonstration si possible, hébergée sur YouTube ou autre.)
+Dans **Slither-Game**, vous devrez :  
+- **Contrôler votre serpent** : Mangez des objets et des serpents ennemis pour grandir.  
+- **Éviter les dangers** : Fuyez les mangoustes .**Astuces** vous pouvez utilisez des obstacles pour vous cacher.  
+- **Survivre et triompher** : Mangez tous les serpents ennemis sans vous faire attraper par la mangouste pour gagner !  
+- **Personnalisez et ajustez** : Modifiez la vitesse et la force de votre serpent à l’aide des sliders,le debug avec un d pour voir ce qui ce passe , creer les obstacles avec un o ou ajoutez des papillons avec un clic sur `mouseDragged`.  
 
-✨ Fonctionnalités
-🐍 Gameplay captivant :
-Personnalisation du joueur : Choisissez un pseudo et personnalisez la couleur de votre serpent.
-Croissance dynamique : Votre serpent grandit en fonction des objets consommés.
-🤖 Intelligence Artificielle :
-IA ennemie avec wander : Les ennemis se déplacent de manière autonome.
-Évitement d'obstacles : Les serpents évitent intelligemment les collisions.
-Arrival : Les ennemis atteignent les cibles avec fluidité.
-🌟 Effets visuels :
-Arrière-plans animés.
-Particules dynamiques autour des interactions.
-Objets visuellement attrayants dispersés sur le terrain.
-🚩 Objectifs du joueur :
-Maximiser le score en mangeant des objets.
-Survivre le plus longtemps possible sans toucher les ennemis ou obstacles.
-🛠 Technologies et Outils
-🖥 Langages et Bibliothèques :
-HTML5 : Structure et affichage.
-CSS3 : Styles visuels et animations.
-JavaScript : Logique du jeu.
-p5.js : Gestion des graphiques et de l'animation.
-p5.sound.js : Ajout d'effets sonores immersifs.
-🛠 Outils de Développement :
-Visual Studio Code : Édition de code.
-Git : Gestion de version.
-Navigateur web : Chrome, Firefox
+### Capture d'Écran  
+*(Ajoutez ici une capture d’écran ou un GIF du gameplay pour illustrer les fonctionnalités.)*  
+
+---
+
+## 🚀 Fonctionnalités Principales  
+### 📋 **Page d'Accueil**  
+- Une interface intuitive pour entrer votre pseudo avant de commencer le jeu. 
+![alt text](image.png)
+
+### 🐍 **Le Serpent Joueur**  
+- Grandit en mangeant de la nourriture ou des serpents ennemis.  
+- Devient brillant après avoir mangé un ennemi.  
+- Peut se cacher derrière des obstacles créés avec la touche `O` (Les obtacles ont un etat de santé qui diminue apres chaque contacte avec le mangouste dès qu'il devient 0 l'obtacle sera détruit et oooops il te mange le mangouste ).  
+
+### 🐍 **Les Serpents Ennemis**  
+- Ils mangent aussi de la nourriture pour grandir.  
+- Deviennent une cible que le joueur doit éliminer.  
+
+### 🦴 **Les Mangoustes**  
+- Elles tournent dans l’arène et traquent le serpent du joueur.  
+- Peuvent détruire les obstacles pour attraper le joueur.  
+### 🦴 **Les papillons**
+-Les papillons circule dès que le serpent du joueur vient , elle fuit (flee) 
+
+### 🌟 **Interactions Avancées**  
+- **Création d’obstacles** : Utilisez la touche `o` pour créer des obstacles derrière lesquels vous pouvez vous cacher et que le serpents les avoid .  
+- **Slider de vitesse et de force** : Ajustez la vitesse et la force du serpent grâce à une interface interactive.  
+- **Ajout de papillons** : Cliquez sur `mouseDragged` pour ajouter plus de papillons dans l’arène.  
+- **le debug** : Utilisez la touche `d` pour debugger pour voir ce qui se passe .  
+### 🎮 **Objectif Final**  
+- Mangez tous les serpents ennemis
+  Astuces :
+- Restez caché derrière des obstacles et évitez la mangouste pour survivre.  
+- Gagnez si tous les ennemis sont éliminés avant d’être attrapé par la mangouste. 
+![alt text](Victoire.jpg)
+
+---
+
+## 🛠️ Technologies Utilisées  
+
+- **Langages** : HTML, CSS, JavaScript.  
+- **Frameworks et Bibliothèques** :  
+  - [p5.js](https://p5js.org/) : Pour les rendus graphiques et interactions.  
+  - [p5.sound](https://p5js.org/reference/#/libraries/p5.sound) : Pour les effets sonores immersifs.  
+- **Outils** : Visual Studio Code ou WebStorm pour le développement.  
+
+---
+
+## 🛠️ Installation  
+
+1. **Clonez le dépôt GitHub** :  
+   ```bash
+   git clone https://github.com/Oumidark/Slither_Game.git
+   
+
+##  🌐 Déploiement sur GitHub Pages
+Ce projet est également déployé sur GitHub Pages et accessible via ce lien :
+Slither-Game sur GitHub Pages
+https://oumidark.github.io/Slither_Game/
