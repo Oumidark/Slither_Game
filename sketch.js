@@ -343,7 +343,7 @@ function displayInstructions() {
   textAlign(LEFT, TOP); // Alignement à gauche et en haut
   textStyle(BOLD); // Met le texte en gras
   
-  let startX = 1162; // Position horizontale de départ
+  let startX = 1160; // Position horizontale de départ
   let startY = 20; // Position verticale de départ
   let lineHeight = 39; // Espacement entre les lignes
   
