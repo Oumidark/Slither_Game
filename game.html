@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slither</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="libraries/p5.min.js"></script>
+    <script src="libraries/p5.sound.min.js"></script>
+    <script src="vehicle.js"></script>
+    <script src="sketch.js"></script>
+    <script src="obstacle.js"></script>
+    <script src="boids.js"></script>
+   <script src="EnemySnakes.js"></script>
+   <script src="quadtree.js"></script>
+   <script src="particle.js"></script>
+    <script>
+      // Récupérer le pseudo du joueur
+      const nickname = localStorage.getItem("playerNickname");
+      if (nickname) {
+        console.log(`Bienvenue ${nickname}, le jeu commence !`);
+        // Ajouter ici un affichage du pseudo dans le canvas ou l'interface
+      }
+    </script>
+  </head>
+  <body>
+    
+    <!-- Le canvas de P5.js sera automatiquement généré ici -->
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slither.io</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="logo">slither</div>
+        <p class="subtitle">Mange pour croître !</p>
+        <input type="text" id="nickname" placeholder="Entrez votre pseudo ici" class="input-box">
+        
+       <!-- Sélecteur de couleur pour changer la couleur du snake -->
+       <!-- <div class="color-picker">
+            <label for="snake-color">Choisissez la couleur de votre serpent :</label>
+            <input type="color" id="snake-color" name="snake-color" value="#00ff00">
+        </div>*/ -->
+
+        <!-- Boutons -->
+        <div class="input-box">
+            <button class="play-button" id="playButton">Jouer</button>
+        </div>
+
+        <!-- Message de bienvenue qui apparaîtra avant le jeu -->
+        <p id="welcomeMessage" style="color: white; display: none;"></p>
+      
+        <!-- Message d'erreur pour pseudo vide -->
+        <p id="errorMessage" style="color: red; display: none;">Veuillez saisir votre pseudo !</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

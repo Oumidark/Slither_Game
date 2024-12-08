@@ -1,0 +1,141 @@
+/* Styles actuels du jeu */
+html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
+}
+
+/* Styles spécifiques à la page d'accueil */
+body {
+  background: url('assets/Purple2.jpg') no-repeat center center;
+  background-size: 100% 100%; /* Force l'image à remplir toute la zone */
+  font-family: Arial, sans-serif;
+}
+
+canvas {
+  display: block;
+}
+
+/* Styles pour la page d'accueil */
+.container {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+/* Animation pour faire grandir le texte */
+.logo {
+  font-size: 100px; /* Taille plus grande */
+  font-weight: bold; /* Met le texte en gras */
+  background: linear-gradient(to right, green, purple);
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: growText 2s ease-in-out infinite;
+}
+
+/* Animation de croissance du texte */
+@keyframes growText {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5); /* Augmenter la taille lors de l'animation */
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+.subtitle {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.input-box {
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  width: 200px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Styles spécifiques à la page d'accueil */
+.container {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  display: flex;
+  flex-direction: column; /* Pour aligner les éléments verticalement */
+  justify-content: center; /* Centrer les éléments verticalement */
+  align-items: center; /* Centrer les éléments horizontalement */
+  height: 100vh; /* Occupe toute la hauteur de la fenêtre */
+}
+
+.play-button {
+  padding: 10px 20px;
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px; /* Un peu d'espace au-dessus du bouton */
+}
+
+.play-button:hover {
+  background-color: darkgreen;
+}
+
+
+.footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.skin-button, .server-button {
+  background-color: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+
+.skin-button:hover, .server-button:hover {
+  text-decoration: underline;
+}
+
+/* Style pour le sélecteur de couleur */
+/* Style pour le sélecteur de couleur */
+.color-picker {
+  margin: 0; /* Supprime les marges autour de l'élément */
+  padding: 0; /* Supprime le padding interne */
+}
+#errorMessage {
+  color: red;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+
+/* Sélecteur de couleur sans bordure, sans marges internes */
+.color-picker input[type="color"] {
+  width: 100px;  /* Ajustez la largeur à votre préférence */
+  height: 40px;  /* Ajustez la hauteur à votre préférence */
+  border: none;  /* Supprime la bordure */
+  padding: 0;  /* Supprime tout padding interne */
+  cursor: pointer;  /* Maintient le curseur sous forme de main */
+  background-color: transparent;  /* Assure que l'arrière-plan est transparent */
+}
