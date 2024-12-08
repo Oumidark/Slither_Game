@@ -39,6 +39,9 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight); // Canvas sur tout l'écran
+    // "label", min, max, val, pas, posX, posY, couleur, propriété à changer
+    createMonSlider("maxSpeed", 1, 15, 12, 1, 10, 0, "white", "maxSpeed");
+    createMonSlider("maxForce", 0.1, 1, 0.5, 0.05, 10, 30, "white", "maxForce");
  // createCanvas(800, 800);
 //quadtree start
 
@@ -68,9 +71,7 @@ let boundary = new Rectangle(800, 800, 1920, 1920);
     let enemy = new EnemySnakes(random(width), random(height), 5); // Le serpent ennemi commence avec 5 segments
     enemySnakes.push(enemy);
   }
-  // "label", min, max, val, pas, posX, posY, couleur, propriété à changer
-  createMonSlider("maxSpeed", 1, 20, 15, 1, 10, 0, "white", "maxSpeed");
-  createMonSlider("maxForce", 1, 5, 1, 0.01, 10, 30, "white", "maxForce");
+
 
   // On créer les "boids". Un boid en anglais signifie "un oiseau" ou "un poisson"
   // Dans cet exemple c'est l'équivalent d'un véhicule dans les autres exemples
@@ -101,35 +102,43 @@ function creerSerpent(nb, rayon) {
   }
 }
 function createMonSlider(label, min, max, val, step, x, y, color, prop) {
-  // On crée un slider pour régler la vitesse max
-  // des véhicules
-  // slider les paramètres : Min, Max, Valeur, Pas
+  // Vérifier si un slider existe déjà pour éviter la duplication
+  if (!this.sliders) {
+    this.sliders = {};
+  }
+
+  if (this.sliders[label]) {
+    this.sliders[label].remove(); // Supprimer l'ancien slider
+    this.sliders[label + "_label"].remove(); // Supprimer l'ancien label
+    this.sliders[label + "_value"].remove(); // Supprimer l'ancienne valeur
+  }
+
+  // Créer un slider
   let slider = createSlider(min, max, val, step);
-  // on positionne le slider en haut à gauche du canvas
-  slider.position(100, y + 17);
-  // Label à gauche du slider "maxSpeed"
-  labelHTML = createP(label);
-  // label en blanc
+  slider.position(x + 100, y + 17); // Ajuster la position
+  this.sliders[label] = slider;
+
+  // Créer un label
+  let labelHTML = createP(label);
   labelHTML.style('color', 'white');
-  // on le positionne en x=10 y = 10
   labelHTML.position(x, y);
-  // On affiche la valeur du slider à droite du slider
+  this.sliders[label + "_label"] = labelHTML;
+
+  // Afficher la valeur
   let labelValue = createP(slider.value());
   labelValue.style('color', color);
-  labelValue.position(250, y);
-  // on veut que la valeur soit mise à jour quand on déplace
-  // le slider
+  labelValue.position(x + 250, y);
+  this.sliders[label + "_value"] = labelValue;
+
+  // Mettre à jour la valeur dynamiquement
   slider.input(() => {
     labelValue.html(slider.value());
-    // On change la propriété de tous les véhicules
     vehicles.forEach(vehicle => {
       vehicle[prop] = slider.value();
     });
   });
-
-
-
 }
+
 
 function draw() {
   background(0);
