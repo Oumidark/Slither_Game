@@ -2,20 +2,27 @@ class Vehicle {
   static debug = false;
 
   constructor(x, y) {
-    this.pos = createVector(x, y);
-    this.vel = createVector(0, 0);
-    this.acc = createVector(0, 0);
-    this.maxSpeed = 20;
-    this.maxForce = 1;
-    this.r = 16;
-    this.rayonZoneDeFreinage = 100;
-    this.isGlowing = isGlowing; // Propriété de brillance
-
+   // Position initiale du véhicule
+   this.pos = createVector(x, y);
+   // Vecteur vitesse initial (nulle)
+   this.vel = createVector(0, 0);
+   // Vecteur accélération initial (nulle)
+   this.acc = createVector(0, 0);
+   // Vitesse maximale du véhicule
+   this.maxSpeed = 20;
+   // Force maximale appliquée pour changer la direction
+   this.maxForce = 1;
+   // Taille (rayon) du véhicule pour les calculs graphiques et de collision
+   this.r = 16;
+   // Rayon de la zone de freinage (utilisé pour ralentir près d'une cible)
+   this.rayonZoneDeFreinage = 100;
+   // Indique si le véhicule a un effet de brillance
+   this.isGlowing = isGlowing;
     
   }
 
 
-  //avoid function 
+  // Méthode pour éviter les obstacles
   avoid(obstacles) {
 
     // calcul d'un vecteur ahead devant le véhicule
@@ -26,13 +33,7 @@ class Vehicle {
     let ahead2 = ahead.copy();
     ahead2.mult(25);
 
- /*   if (Vehicle.debug) {
-      // on le dessine avec ma méthode this.drawVector(pos vecteur, color)
-      this.drawVector(this.pos, ahead, "yellow");
-      // on dessine le vecteur ahead2 en bleu
-      this.drawVector(this.pos, ahead2, "blue");
-    }
-*/
+
     // Calcul des coordonnées du point au bout de ahead
     let pointAuBoutDeAhead = this.pos.copy().add(ahead);
     // Calcul des coordonnées du point au bout de ahead2
@@ -55,34 +56,16 @@ class Vehicle {
     // idem avec la position du véhicule
     let distance3 = this.pos.dist(obstacleLePlusProche.pos);
 
-
-   /* if (Vehicle.debug) {
-      // On dessine avec un cercle le point au bout du vecteur ahead pour debugger
-      fill(255, 0, 0);
-      circle(pointAuBoutDeAhead.x, pointAuBoutDeAhead.y, 10);
-      // et un au bout de ahead2
-      fill(0, 255, 0);
-      circle(pointAuBoutDeAhead2.x, pointAuBoutDeAhead2.y, 10);
-
-      // On dessine la zone d'évitement
-      // Pour cela on trace une ligne large qui va de la position du vaisseau
-      // jusqu'au point au bout de ahead
-      stroke(100, 100);
-      strokeWeight(this.largeurZoneEvitementDevantVaisseau);
-      line(this.pos.x, this.pos.y, pointAuBoutDeAhead.x, pointAuBoutDeAhead.y);
-    }*/
-
     // Calcul de la plus petite distance entre distance et distance2
     distance = min(distance, distance2);
-    // calcul de la plus petite distance entre distance et distance3
+        // Sélection de la distance la plus courte
     distance = min(distance, distance3);
 
     // si la distance est < rayon de l'obstacle
     // il y a collision possible et on dessine l'obstacle en rouge
     if (distance < obstacleLePlusProche.r + this.r*2) {
 
-      // calcul de la force d'évitement. C'est un vecteur qui va
-      // du centre de l'obstacle vers le point au bout du vecteur ahead
+     // Calcul d'une vitesse désirée pour éviter l'obstacle
       // on va appliquer force = vitesseDesiree - vitesseActuelle
       let desiredVelocity;
       if (distance == distance2) {
@@ -115,10 +98,7 @@ class Vehicle {
     }
 
   }
-
-
-  //
-
+  // Méthode pour dessiner un vecteur (utile pour le débogage visuel)
   drawVector(pos, v, color) {
     push();
     // Dessin du vecteur vitesse
@@ -134,11 +114,11 @@ class Vehicle {
     triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);
     pop();
   }
-  //
+   // Méthode pour trouver l'obstacle le plus proche
   getObstacleLePlusProche(obstacles) {
     let plusPetiteDistance = 100000000;
     let obstacleLePlusProche = undefined;
-  
+  // Parcourir tous les obstacles pour trouver celui avec la distance minimale
     obstacles.forEach(o => {
       // Je calcule la distance entre le vaisseau et l'obstacle
       const distance = this.pos.dist(o.pos);
@@ -171,7 +151,6 @@ class Vehicle {
 
   flee(target) {
     
-    // recopier code de flee de l'exemple précédent
   }
   eat(list, nutrition, perception) {
     let record = Infinity;
@@ -210,8 +189,7 @@ class Vehicle {
     return createVector(0, 0);
   }
 
-  // TODO : modifier pour ajouter un 3ème paramètre d
-  // qui dira à quelle distance derrière le véhicule on doit s'arrêter
+ 
   // si d=0 c'est le comportement arrival normal
   seek(target, arrival, d = 0) {
     let desiredSpeed = p5.Vector.sub(target, this.pos);
@@ -290,18 +268,18 @@ class Vehicle {
     force.limit(this.maxForce);
     return force;
   }
-
+// Méthode pour appliquer une force externe au véhicule
   applyForce(force) {
     this.acc.add(force);
   }
-
+ // Mise à jour de l'état du véhicule
   update() {
     this.vel.add(this.acc);
     this.vel.limit(this.maxSpeed);
     this.pos.add(this.vel);
     this.acc.set(0, 0);
   }
-
+// Méthode pour afficher le véhicule
   show(index) {
     noStroke();
     if (index === 0) {
@@ -375,7 +353,7 @@ class Vehicle {
     }
   }
 }
-
+//class target herite de la classe vehicle
 class Target extends Vehicle {
   constructor(x, y) {
     super(x, y);

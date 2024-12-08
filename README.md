@@ -16,7 +16,6 @@ Dans **Slither-Game**, vous devrez :
 ## 🚀 Fonctionnalités Principales  
 ### 📋 **Page d'Accueil**  
 - Une interface intuitive pour entrer votre pseudo avant de commencer le jeu. 
-![alt text](image.png)
 
 ### 🐍 **Le Serpent Joueur**  
 - **Croissance** : Grandit en mangeant de la nourriture ou des serpents ennemis.  

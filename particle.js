@@ -1,10 +1,4 @@
-// The Nature of Code
-// Daniel Shiffman
-// http://natureofcode.com
 
-// Simple Particle System
-
-// A simple Particle class
 class Particle {
   constructor(x, y) {
       this.position = createVector(x, y);

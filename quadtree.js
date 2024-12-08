@@ -1,13 +1,3 @@
-// Daniel Shiffman
-// http://codingtra.in
-// http://patreon.com/codingtrain
-
-// QuadTree
-// 1: https://www.youtube.com/watch?v=OJxEcs0w_kE
-// 2: https://www.youtube.com/watch?v=QQx_NmCIuCY
-
-// For more:
-// https://github.com/CodingTrain/QuadTree
 
 class Point {
   constructor(x, y) {

@@ -1,50 +1,40 @@
-let vehicles = [];
-let target;
-const flock = [];
-let mode = "snake";
-let particleA,particleB;
-let obstacles = [];
-const food = [];
-let enemySnakes = [];
-let sliderVitesseMaxVehicules;
-let enemiesEaten = 0;
-//let enemySnakes = [];
-let qtree;
-let alimentsManges=0 ;
-let segmentSize = 20;
-const foodColors = []; // Stocker les couleurs de chaque nourriture
-// Variables pour la brillance du serpent joueur
-let isGlowing = false;
-let glowTimer = 0;
+// Déclaration des variables principales
+let vehicles = []; // Tableau pour stocker les segments du serpent principal
+let target; // Vecteur cible pour le serpent
+const flock = []; // Tableau pour stocker les "boids" (poissons)
+let mode = "snake"; // Mode de jeu (par défaut "snake")
+let particleA, particleB; // Particules utilisées dans le jeu
+let obstacles = []; // Tableau pour les obstacles
+const food = []; // Tableau pour stocker les aliments
+let enemySnakes = []; // Tableau pour les serpents ennemis
+let sliderVitesseMaxVehicules; // Slider pour régler la vitesse max des véhicules
+let enemiesEaten = 0; // Compteur pour les ennemis mangés
+let qtree; // QuadTree pour la gestion des collisions
+let alimentsManges = 0; // Compteur pour les aliments consommés
+let segmentSize = 20; // Taille d'un segment de serpent
+const foodColors = []; // Tableau pour stocker les couleurs des aliments
 
-// Equivalent du tableau de véhicules dans les autres exemples
-/*
-const flock = [];
-let fishImage;
-let requinImage;
-let posYSliderDeDepart = 10;
-let alignSlider, cohesionSlider, separationSlider;
-let labelNbBoids;
-*/
+// Variables pour la gestion de la brillance du serpent joueur
+let isGlowing = false; // Indique si le serpent est en mode brillance
+let glowTimer = 0; // Durée de la brillance
 
-
-
+// Préchargement des images nécessaires
 function preload() {
-  // Charger l'image du fond
-  backgroundImage = loadImage('assets/infinite.png');
-  particleImage = loadImage('assets/enemy.png');
-   // Assurez-vous que l'image est dans le dossier 'assets'
- fishImage = loadImage('assets/butterflie.png');
+  backgroundImage = loadImage('assets/infinite.png'); // Image de fond
+  particleImage = loadImage('assets/enemy.png'); // Image des ennemis
+  fishImage = loadImage('assets/butterflie.png'); // Image des "boids"
 }
 
+// Initialisation du canvas et des entités du jeu
 function setup() {
-  createCanvas(windowWidth, windowHeight); // Canvas sur tout l'écran
+  createCanvas(windowWidth, windowHeight); // Créer un canvas couvrant tout l'écran
+// Création de sliders pour ajuster les paramètres des véhicules
     // "label", min, max, val, pas, posX, posY, couleur, propriété à changer
-    createMonSlider("maxSpeed", 1, 15, 12, 1, 10, 0, "white", "maxSpeed");
+    createMonSlider("maxSpeed", 1, 20, 7, 1, 10, 0, "white", "maxSpeed");
     createMonSlider("maxForce", 0.1, 1, 0.5, 0.05, 10, 30, "white", "maxForce");
  // createCanvas(800, 800);
 //quadtree start
-
+// Configuration du QuadTree pour la gestion des collisions
 let boundary = new Rectangle(800, 800, 1920, 1920);
   qtree = new QuadTree(boundary, 4);
   for (let i = 0; i < 300; i++) {
@@ -53,7 +43,7 @@ let boundary = new Rectangle(800, 800, 1920, 1920);
     let p = new Point(x, y);
     qtree.insert(p);
   }
-
+// Initialisation des particules 
  particleA = new Particle(320, 60);
  particleB = new Particle(320, 300);
   target = createVector(width / 2, height / 2);
@@ -62,8 +52,9 @@ let boundary = new Rectangle(800, 800, 1920, 1920);
 //obstacles.push(new Obstacle(width / 3, height / 1.5, 80, color(random(255), random(255), random(255))));
 //obstacles.push(new Obstacle(width / 1, height / 6, 100, color(random(255), random(255), random(255))));
 //obstacles.push(new Obstacle(width / 2, height / 8, 100, color(random(255), random(255), random(255))));
-  let rayon = 10;
-  creerSerpent(5, rayon); // Créer un serpent avec 10 segments
+
+let rayon = 10;
+creerSerpent(5, rayon); // Créer un serpent avec 5segments
   
   
   // Créer des serpents ennemis
@@ -80,16 +71,8 @@ let boundary = new Rectangle(800, 800, 1920, 1920);
     b.r = random(8, 50);
     flock.push(b);
   }
-/*
-  // Créer un label avec le nombre de boids présents à l'écran
-   labelNbBoids = createP("Nombre de boids : " + flock.length );
-  // couleur blanche
-  labelNbBoids.style('color', 'white');
-  labelNbBoids.position(10, posYSliderDeDepart+180);
-*/
 }
   
-
 
 function creerSerpent(nb, rayon) {
   for (let i = 0; i < nb; i++) {
@@ -139,37 +122,22 @@ function createMonSlider(label, min, max, val, step, x, y, color, prop) {
   });
 }
 
-
+// Fonction principale d'affichage
 function draw() {
   background(0);
-  // Affiche les instructions par-dessus
-
-
-  // particles
-
-
-
-
-  //
-  // drawEnemySnakes(); // Dessine les serpents ennemis
-  // updateEnemySnakes(); // Met à jour les serpents ennemis
-  // Dessiner l'image hexagonale de fond
+  
   imageMode(CENTER);
 
   // Draw the background image, ensuring it's centered and stretched
   image(backgroundImage, width / 2, height / 2, width, height);
   displayInstructions();
   qtree.show();
-  // L'image s'adapte à la taille de la fenêtre
-  //boids 
+ 
 
-
+// Affichage des "boids" et de leur comportement
   for (let boid of flock) {
-    //boid.edges();
     boid.flock(flock);
-
     boid.fleeWithTargetRadius(vehicles);
-
     boid.update();
     boid.show();
   }
@@ -321,18 +289,7 @@ function draw() {
     vehicle.show(index);
   });
   
-/*
-    // mettre à jour le nombre de boids
-    labelNbBoids.html("Nombre de boids : " + flock.length);
-    for (let boid of flock) {
-      //boid.edges();
-      boid.flock(flock);
-  
-      boid.fleeWithTargetRadius(target);
-  
-      boid.update();
-      boid.show();
-    }  */
+
 
       particleA.collide(particleB);
       
