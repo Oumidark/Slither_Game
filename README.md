@@ -20,7 +20,7 @@ Dans **Slither-Game**, vous devrez :
 ### 🐍 **Le Serpent Joueur**  
 - **Croissance** : Grandit en mangeant de la nourriture ou des serpents ennemis.  
 - **Effets spéciaux** :Devient brillant après avoir mangé un ennemi.  
-- **Interactions avec l'environnement** : Peut se cacher derrière des obstacles créés avec la touche `O` (Les obtacles ont un etat de santé qui diminue apres chaque contacte avec le mangouste dès qu'il devient 0 l'obtacle sera détruit et oooops il te mange le mangouste ).  
+- **Interactions avec l'environnement** : Peut se cacher derrière des obstacles créés avec la touche `O` (Les obtacles ont un etat de santé qui diminue apres chaque contacte avec le mangouste dès qu'il devient 0 l'obtacle sera détruit et ooopla il te mange le mangouste ).  
 
 ### 🐍 **Les Serpents Ennemis**  
 - Ils mangent aussi de la nourriture pour grandir.  
@@ -45,7 +45,7 @@ Dans **Slither-Game**, vous devrez :
 - **Ajout de papillons** : Cliquez sur `mouseDragged` pour ajouter plus de papillons dans l’arène.  
 - **le debug** : Utilisez la touche `d` pour debugger pour voir ce qui se passe .  
 
-### 🚀 **Concepts d'IA Réactive Utilisés **
+### 🚀 Concepts d'IA Réactive Utilisés
 Ce projet met en œuvre plusieurs concepts étudiés en classe, notamment :  
 - **Comportements du serpent** :  
   - **Seek** : Se dirige vers la nourriture.  
@@ -65,10 +65,10 @@ Ce projet met en œuvre plusieurs concepts étudiés en classe, notamment :
   - **Debug Mode** : Utilisation de la touche `d` pour afficher des informations comme les vecteurs et les zones d’impact.  
 
 - **Particles (Mangoustes)** :
-- **Wander** : Les mangoustes se déplacent aléatoirement dans l’arène, simulant un comportement erratique et imprévisible.   
-- **Destruction des obstacles** : Les mangoustes détruisent les obstacles lorsqu’elles les rencontrent. Cela peut exposer le serpent du joueur si celui-ci se cache derrière.  
-- **Prendre des dégâts** : Lorsqu'une mangouste entre en collision avec un obstacle, elle subit des dégâts. Les obstacles perdent de la santé après chaque contact, et ils sont détruits lorsque leur santé atteint zéro.  
-- **Collision** : Les mangoustes détectent et attaquent le serpent du joueur lorsqu'elles le croisent, ce qui peut entraîner la mort du serpent si une collision se produit. 
+  - **Wander** : Les mangoustes se déplacent aléatoirement dans l’arène, simulant un comportement erratique et imprévisible.   
+  - **Destruction des obstacles** : Les mangoustes détruisent les obstacles lorsqu’elles les rencontrent. Cela peut exposer le serpent du joueur si celui-ci se cache derrière.  
+  - **Prendre des dégâts** : Lorsqu'une mangouste entre en collision avec un obstacle, elle subit des dégâts. Les obstacles perdent de la santé après chaque contact, et ils sont détruits lorsque leur santé atteint zéro.  
+  - **Collision** : Les mangoustes détectent et attaquent le serpent du joueur lorsqu'elles le croisent, ce qui peut entraîner la mort du serpent si une collision se produit. 
 
 - **Sliders interactifs** : Permettent d'ajuster la vitesse et la force du serpent.  
 
@@ -87,7 +87,7 @@ Ce projet met en œuvre plusieurs concepts étudiés en classe, notamment :
 - **Frameworks et Bibliothèques** :  
   - [p5.js](https://p5js.org/) : Pour les rendus graphiques et interactions.  
   - [p5.sound](https://p5js.org/reference/#/libraries/p5.sound) : Pour les effets sonores immersifs.  
-- **Outils** : Visual Studio Code ou WebStorm pour le développement.  
+- **Outils** : Visual Studio Code pour le développement.  
 
 ---
 
